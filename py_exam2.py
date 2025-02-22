@@ -69,8 +69,15 @@ def avg_lysine_stats(filename="multi_seqs.txt") -> Tuple[float, float]:
         Example output:  (4.390243902439025, 4.0)
     """
     # Complete the function body below to answer question 4
+    with open(filename, "r") as f:
+        sequences = f.read().splitlines()
+
+    lysine_counts = [seq.count('K') for seq in sequences]
+
+    mean_count = sum(lysine_counts) / len(lysine_counts)
+    median_count = statistics.median(lysine_counts)
     
-    return
+    return mean_count, median_count
 
 def plot_lysine_stats(filename: str = "multi_seqs.txt") -> None:
     """Question 5
