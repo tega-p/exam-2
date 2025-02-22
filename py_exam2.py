@@ -75,8 +75,14 @@ def plot_lysine_stats(filename: str = "multi_seqs.txt") -> None:
         Example output:  <plot of the lysine count distribution>
     """
     # Complete the function body below to answer question 5
-    
-    return
+    with open(filename, "r") as f:
+        sequences = f.read().splitlines()
+
+    lysine_counts = [seq.count('K') for seq in sequences]
+
+    mean_count = sum(lysine_counts) / len(lysine_counts)
+    median_count = statistics.median(lysine_counts)
+    return mean_count, median_count
 
 def translate_dna(codons_fname: str = '../data/codons.txt', dna_fname: str = '../data/dna.txt') -> Sequence[str]:
     """Question 6
