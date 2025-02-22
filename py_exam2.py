@@ -11,7 +11,7 @@ def generate_number_list(last_number: int = 21) -> Sequence:
     """
     # Complete the function body below to answer question 1
     
-    return
+    return list(range(3, last_number + 1,3))
 
 
 def lex_sort_file(filename: str = "multi_seqs.txt") -> Sequence:
@@ -28,8 +28,9 @@ def lex_sort_file(filename: str = "multi_seqs.txt") -> Sequence:
          ...
     """
     # Complete the function body below to answer question 2
-    
-    return
+    with open(filename, "r") as f:
+        sequences = f.read().splitlines()
+    return sorted(sequences)
 
 def top_lysine_stats(filename: str = "multi_seqs.txt") -> Tuple[float, str]:
     """Question 3
