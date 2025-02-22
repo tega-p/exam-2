@@ -52,15 +52,15 @@ def top_lysine_stats(filename: str = "multi_seqs.txt") -> Tuple[float, str]:
 
     for seq in sequences:
         lysine_count = seq.count('K')
-        sequence_length = len(seq)
+        if len(seq) == :
+            continue
+        percentage = (lysine_count / len(seq)) * 100
+        if percentage > max_percentage:
+            max_percentage = percentage
+            best_sequence = seq
         
-        if sequence_length > 0:
-            percentage = (lysine_count / sequence_length) * 100
-            if percentage > max_percentage:
-                max_percentage = percentage
-                best_percentage = seq
-                
-    return round(max_percentage, 2), best_sequence
+       
+     return round(max_percentage, 2), best_sequence
 
 def avg_lysine_stats(filename="multi_seqs.txt") -> Tuple[float, float]:
     """Question 4
@@ -81,14 +81,8 @@ def plot_lysine_stats(filename: str = "multi_seqs.txt") -> None:
         Example output:  <plot of the lysine count distribution>
     """
     # Complete the function body below to answer question 5
-    with open(filename, "r") as f:
-        sequences = f.read().splitlines()
 
-    lysine_counts = [seq.count('K') for seq in sequences]
-
-    mean_count = sum(lysine_counts) / len(lysine_counts)
-    median_count = statistics.median(lysine_counts)
-    return mean_count, median_count
+    return 
 
 def translate_dna(codons_fname: str = '../data/codons.txt', dna_fname: str = '../data/dna.txt') -> Sequence[str]:
     """Question 6
