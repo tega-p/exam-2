@@ -105,6 +105,7 @@ plt.title("Lysine Count Distribution in Sequences")
 plt.show()
 
 
+from typing import List
 def translate_dna(codons_fname: str = '../data/codons.txt', dna_fname: str = '../data/dna.txt') -> Sequence[str]:
     """Question 6
         File `codons.txt` includes a non-standard codon table, including start and stop codons. Use the codons in that file to translate the DNA sequence in `dna.txt` into multiple protein sequences.
@@ -137,8 +138,36 @@ So for this DNA sequence, the peptide sequence `GSMSV` should be returned.
         Example output:  ['YTSRRSPSSVGF', ...]
     """
     # Complete the function body below to answer question 6
-    
-    return
+    codon_table = {}
+    with open(codons_fname, "r") as f:
+        for line in f:
+            parts = line.strip().split()
+            if len(parts) == 2:
+                codon, amino_acid = parts
+                codon_table[codon] = amino_acid
+
+    with open(dna_fname, "r") as f:
+        dna_sequence = f.read().strip()
+
+    proteins = []
+    protein = []
+    in_translation = False
+    start_codon = "ATG"
+
+    for i in range(0, len(dna_sequence) - 2, 3):
+        codon = dna_sequence[i:i+3]
+        if in_translation:
+            if codon in codon_table and codon_table[codon] == "*":
+                proteins.append("".join(protein))
+                protein = []
+                in_translation = False
+            elif codon in codon_table:
+                portein.append(codon_table[codon])
+        else:
+            if codon == start_codon:
+                in_translation = True
+                protein = []
+    return proteins
 
 def longest_translatable_sequence(codons_fname: str = '../data/codons.txt', dna_fname: str = '../data/dna.txt') -> int:
     """Question 7
