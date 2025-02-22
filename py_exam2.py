@@ -106,7 +106,7 @@ plt.show()
 
 
 from typing import List
-def translate_dna(codons_fname: str = '/data/codons.txt', dna_fname: str = '/data/dna.txt') -> Sequence[str]:
+def translate_dna(codons_fname: str = 'data/codons.txt', dna_fname: str = 'data/dna.txt') -> Sequence[str]:
     """Question 6
         File `codons.txt` includes a non-standard codon table, including start and stop codons. Use the codons in that file to translate the DNA sequence in `dna.txt` into multiple protein sequences.
         To do this, you need to:
