@@ -219,7 +219,7 @@ with open(codons_fname, "r") as f:
                     j += 3
                 i += 3
                 
-   return longest_length
+return longest_length
 
 
 if __name__ == '__main__':
