@@ -85,7 +85,7 @@ def avg_lysine_stats(filename="multi_seqs.txt") -> Tuple[float, float]:
 
 
 import matplotlib.pyplot as plt
-def plot_lysine_stats(filename: str = "multi_seqs.txt") -> None:
+def plot_lysine_stats(filename: str = "data/multi_seqs.txt") -> None:
     """Question 5
         Wrte a function that plot the distribution of lysine counts, in the sequences from file `multi_seqs.txt`.
 
@@ -98,7 +98,7 @@ with open(filename, "r") as f:
 
 lysine_counts = [seq.count('K') for seq in sequences]
 
-plt.hist(lysine_counts, bins=10, edgecolor="black")
+plt.hist(lysine_counts, bins="auto", edgecolor="black")
 plt.xlabel("Number of Lysines (K)")
 plt.ylabel("Frequency")
 plt.title("Lysine Count Distribution in Sequences")
