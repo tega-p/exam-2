@@ -61,6 +61,8 @@ def top_lysine_stats(filename: str = "multi_seqs.txt") -> Tuple[float, str]:
             
         return round(max_percentage, 2), best_sequence
 
+
+import statistics
 def avg_lysine_stats(filename="multi_seqs.txt") -> Tuple[float, float]:
     """Question 4
         Compute the mean and median number of lysines in sequences in `multi_seqs.txt`, and return them
@@ -73,6 +75,9 @@ def avg_lysine_stats(filename="multi_seqs.txt") -> Tuple[float, float]:
         sequences = f.read().splitlines()
 
     lysine_counts = [seq.count('K') for seq in sequences]
+
+    if not lysine_counts:
+        return 0.0, 0.0
 
     mean_count = sum(lysine_counts) / len(lysine_counts)
     median_count = statistics.median(lysine_counts)
