@@ -207,17 +207,19 @@ with open(codons_fname, "r") as f:
         i = frame
         while i < len(dna_sequence) -2:
             codon = dna_sequence[i:i+3]
+           
             if codon == start_codon:
                 j = i
                 while j < len(dna_sequence) - 2:
                     next_codon = dna_sequence[j:j+3]
+                    
                     if next_codon in stop_codons:
                         sequence_length = j - i + 3
                         longest_length = max(longest_length, sequence_length)
                     j += 3
                 i += 3
                 
-    return longest_length
+return longest_length
 
 
 if __name__ == '__main__':
