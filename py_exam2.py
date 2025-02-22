@@ -32,6 +32,8 @@ def lex_sort_file(filename: str = "multi_seqs.txt") -> Sequence:
         sequences = f.read().splitlines()
     return sorted(sequences)
 
+
+from typing import Tuple
 def top_lysine_stats(filename: str = "multi_seqs.txt") -> Tuple[float, str]:
     """Question 3
         Work out which sequence from file `multi_seqs.txt` has the highest percentage of lysine (`K`) residues,
@@ -50,10 +52,14 @@ def top_lysine_stats(filename: str = "multi_seqs.txt") -> Tuple[float, str]:
 
     for seq in sequences:
         lysine_count = seq.count('K')
-        percentage = (lysine_count / len(seq)) * 100 if seq else 0
-        if percentage > max_percentage:
-            max_percentage = percentage 
-            best_sequence = seq
+        sequence_length = len(seq)
+        
+        if sequence_length > 0:
+            percentage = (lysine_count / sequence_length) * 100
+            if percentage > max_percentage:
+                max_percentage = percentage
+                best_percentage = seq
+                
     return round(max_percentage, 2), best_sequence
 
 def avg_lysine_stats(filename="multi_seqs.txt") -> Tuple[float, float]:
