@@ -83,6 +83,8 @@ def avg_lysine_stats(filename="multi_seqs.txt") -> Tuple[float, float]:
     
     return mean_count, median_count
 
+
+import matplotlib.pyplot as plt
 def plot_lysine_stats(filename: str = "multi_seqs.txt") -> None:
     """Question 5
         Wrte a function that plot the distribution of lysine counts, in the sequences from file `multi_seqs.txt`.
@@ -91,8 +93,17 @@ def plot_lysine_stats(filename: str = "multi_seqs.txt") -> None:
         Example output:  <plot of the lysine count distribution>
     """
     # Complete the function body below to answer question 5
+with open(filename, "r") as f:
+    sequences = f.read().splitlines()
 
-    return 
+lysine_counts = [seq.count('K') for seq in sequences]
+
+plt.hist(lysine_counts, bins=10, edgecolor="black")
+plt.xlabel("Number of Lysines (K)")
+plt.ylabel("Frequency")
+plt.title("Lysine Count Distribution in Sequences")
+plt.show()
+
 
 def translate_dna(codons_fname: str = '../data/codons.txt', dna_fname: str = '../data/dna.txt') -> Sequence[str]:
     """Question 6
