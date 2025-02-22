@@ -93,7 +93,7 @@ def plot_lysine_stats(filename: str = "data/multi_seqs.txt") -> None:
         Example output:  <plot of the lysine count distribution>
     """
     # Complete the function body below to answer question 5
-with open(filename, "r") as f:
+with open("data/multi_seqs.txt", "r") as f:
     sequences = f.read().splitlines()
 
 lysine_counts = [seq.count('K') for seq in sequences]
