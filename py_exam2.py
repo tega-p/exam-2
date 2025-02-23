@@ -136,8 +136,39 @@ So for this DNA sequence, the peptide sequence `GSMSV` should be returned.
         Example output:  ['YTSRRSPSSVGF', ...]
     """
     # Complete the function body below to answer question 6
- 
+ codon_table = {}
+with open(codons_fname, "r") as f:
+    for line in f:
+        parts = line.strip().split()
+        if len(parts) == 2:
+            codon, amino_acid = parts
+            codon_table[codon] = amino_acid
 
+with open(dna_fname, "r") as f:
+    dna_sequence = f.read().strip()
+
+proteins = []
+protein = []
+in_traslation = False
+start_codon = "ATG"
+
+for i in range(0, len(dna_sequence) - 2, 3):
+    codon = dna_sequence[i:i+3]
+
+if in_translation:
+    if codon in codon_table and codon_table[codon] == "*":
+        proteins.append("".join(protein))
+        protein = []
+        in_translation = False
+    elif codon in codon_table:
+        protein.append(codon_table[codon])
+
+elif codon == start_codon:
+    in_translation = True
+    protein.append('M')
+ return proteins
+                           
+                           
 
 from typing import List
 def longest_translatable_sequence(codons_fname: str = 'data/codons.txt', dna_fname: str = 'data/dna.txt') -> int:
