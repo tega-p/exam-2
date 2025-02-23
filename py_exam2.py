@@ -159,7 +159,7 @@ while i < len(dna_sequence) - 2:
         sequence_length = j + 3 - i
         max_length = max(max_length, sequence_length)
         break
-    j += 3
+ j += 3
  i +=3
 return max_length
 
