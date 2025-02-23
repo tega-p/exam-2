@@ -46,16 +46,20 @@ def top_lysine_stats(filename: str = "multi_seqs.txt") -> Tuple[float, str]:
     # Complete the function body below to answer question 3
     with open(filename, "r") as f:
         sequences = f.read().splitlines()
-
+if not sequences:
+    print("Error: File is empty or not read correctly.")
+    return 0.0, ""
+    
     max_percentage = 0.0
     best_sequence = ""
 
     for seq in sequences:
+        if len(seq) == 0:
+            continue
+            
         lysine_count = seq.count('K')
         if len(seq)  > 0:
            percentage = (lysine_count / len (seq)) * 100
-        else:
-            percentage = 0.0
      
         if percentage > max_percentage:
             max_percentage = percentage
