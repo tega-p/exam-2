@@ -151,7 +151,7 @@ with open(dna_fname, 'r') as file:
 for frame in range(3):
     i = frame
 while i < len(dna_sequence) - 2:
-    if dna_sequence[i:i+3]
+    if dna_sequence[i:i+3]:
     if codon in stop_codons:
         sequence_length = j + 3 - i
         max_length = max(max_length, sequence_length)
