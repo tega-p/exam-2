@@ -44,7 +44,7 @@ def top_lysine_stats(filename: str = "multi_seqs.txt") -> Tuple[float, str]:
 
     """
     # Complete the function body below to answer question 3
-   with open(filename, "r") as f:
+    with open(filename, "r") as f:
        sequences = f.read().splitlines()
 
     max_percentage = 0.0
