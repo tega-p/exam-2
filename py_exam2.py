@@ -144,10 +144,10 @@ except FileNotFoundError:
 print(f"Loaded {len(codon_table)}codons.")
 print(f"DNA Sequence Length: {len(dna_sequence)}")
 
-    proteins = []
-    protein = []
-    in_translation = False
-    start_codon = "ATG"
+      proteins = []
+      protein = []
+      in_translation = False
+      start_codon = "ATG"
 
     for i in range(0, len(dna_sequence) - 2, 3):
         codon = dna_sequence[i:i+3]
