@@ -50,8 +50,8 @@ if not sequences:
     print("Error: File is empty or not read correctly.")
 return 0.0, ""
     
-    max_percentage = 0.0
-    best_sequence = ""
+ max_percentage = 0.0
+ best_sequence = ""
 
     for seq in sequences:
         if len(seq) == 0:
