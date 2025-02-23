@@ -48,7 +48,7 @@ def top_lysine_stats(filename: str = "multi_seqs.txt") -> Tuple[float, str]:
         sequences = f.read().splitlines()
 if not sequences:
     print("Error: File is empty or not read correctly.")
-    return 0.0, ""
+return 0.0, ""
     
     max_percentage = 0.0
     best_sequence = ""
