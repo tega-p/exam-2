@@ -155,7 +155,7 @@ for i in range(0, len(dna_sequence) - 2, 3):
         in_translation = True
         protein = []
 
-return proteins
+     return proteins
  
 
 
