@@ -124,44 +124,39 @@ So for this DNA sequence, the peptide sequence `GSMSV` should be returned.
         Example output:  ['YTSRRSPSSVGF', ...]
     """
     # Complete the function body below to answer question 6
-  def load_codon_tale(codons_fname: str) -> Dict[str, str]:
-      """Load codon-to-amino-acid mappings from a codon file."""
-      codon_table = {}
-      with open(codons_fname, 'r') as file:
-          for line in file:
-              parts = line.strip().split()
-              if len(parts) == 2:
-                  codon, amino_acid = parts
-                  codon_table[codon] = amino_acid
+codon_table = {}
 
-      return codon_table
-   def translate_dna(codons_fname: str = 'data/codons.txt', dna_fname: str = 'data/dna.txt') -> List[str]:
-       """Translate DNA into peptide sequences based on codon mappings"""
-       codon_table = load_codon_table(codons_fname)
-       start_codon = 'ATG'
-       stop_codons = {"TAA", "TAG", "TGA"}
-       with open(dna_fname, 'r') as file:
-           dna_sequence = file.read().strip()
+with open(codons_fname, 'r') as f:
+    for line in f:
+        parts = line.strip().split()
+        if len(parts) == 2:
+            codon, amino_acid = parts
+            codon_table[codon] = amino_acid
 
-        peptide_sequences = []
-          i = 0
-          while i < len(dna_sequence) - 2:
-              if dna_sequence[i:i+3] == start_codon:
-                  peptide = []
-                  j = i
-                  while j < len(dna_sequence) - 2:
-                      codon = dna_sequence [j:j+3]
-                      if codon in stop_codons:
-                          break
-                      if codon in codon_table:
-                          peptide.append(codon_table[codon])
-                      j += 3
-                if peptide:
-                    peptide_sequences.append("".join(peptide))
+with open(dna_fname, "r") as f:
+    dna_sequence = f.read().strip()
 
-            i += 3
-        return peptide_sequences
+proteins = []
+protein = []
+in_translation = False
+start_codon = "ATG"
 
+for i in range(0, len(dna_sequence) - 2, 3):
+    codon = dna_sequence[i:i+3]
+    if in_translation:
+        if codon in codon_table and codon_table[codon] == "*":
+            proteins.append("".join(protein))
+            protein = []
+            in_translation = False
+        elif codon in codon_table:
+            protein.append(codon_table[codon])
+
+    elif codon == start_codon:
+        in_translation = True
+        protein = []
+
+return proteins
+ 
 
 
 from typing import List
