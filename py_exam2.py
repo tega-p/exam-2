@@ -125,15 +125,24 @@ So for this DNA sequence, the peptide sequence `GSMSV` should be returned.
     """
     # Complete the function body below to answer question 6
     codon_table = {}
+try:
     with open(codons_fname, "r") as f:
         for line in f:
             parts = line.strip().split()
             if len(parts) == 2:
                 codon, amino_acid = parts
                 codon_table[codon] = amino_acid
-
+except FileNotFoundError:
+    print(f"Error: File {codons_fnmae} not found.")
+    return []
+try:
     with open(dna_fname, "r") as f:
         dna_sequence = f.read().strip()
+except FileNotFoundError:
+    print(f"Error: File {dna_fname} not found.")
+    return []
+print(f"Loaded {len(codon_table)}codons.")
+print(f"DNA Sequence Length: {len(dna_sequence)}")
 
     proteins = []
     protein = []
