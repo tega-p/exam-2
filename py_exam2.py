@@ -142,26 +142,7 @@ def longest_translatable_sequence(codons_fname: str = 'data/codons.txt', dna_fna
             Example output:  245
     """
     # Complete the function body below to answer question 7
-start_codon = "ATG"
-stop_codons = {"TAA", "TAG", "TGA"}
-with open(dna_fname, 'r') as file:
-    dna_sequence = file.read().strip()
-    max_length = 0
 
-for frame in range(3):
-    i = frame
-while i < len(dna_sequence) - 2:
-     if dna_sequence[i:i+3] == start_codon:
-         j = i + 3
-         while j < len(dna_sequence) - 2:
-             codon = dna_sequence[j:j+3]
-     if codon in stop_codons:
-        sequence_length = j + 3 - i
-        max_length = max(max_length, sequence_length)
-        break
- j += 3
- i +=3
-return max_length
 
 
 if __name__ == '__main__':
