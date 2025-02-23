@@ -149,8 +149,8 @@ So for this DNA sequence, the peptide sequence `GSMSV` should be returned.
                 in_translation = False
             elif codon in codon_table:
                 portein.append(codon_table[codon])
-        else:
-            if codon == start_codon:
+        
+            elif codon == start_codon:
                 in_translation = True
                 protein = []
     return proteins
