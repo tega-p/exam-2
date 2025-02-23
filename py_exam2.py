@@ -124,45 +124,7 @@ So for this DNA sequence, the peptide sequence `GSMSV` should be returned.
         Example output:  ['YTSRRSPSSVGF', ...]
     """
     # Complete the function body below to answer question 6
-    codon_table = {}
-try:
-    with open(codons_fname, "r") as f:
-        for line in f:
-            parts = line.strip().split()
-            if len(parts) == 2:
-                codon, amino_acid = parts
-                codon_table[codon] = amino_acid
-except FileNotFoundError:
-    print(f"Error: File {codons_fnmae} not found.")
-    return []
-try:
-    with open(dna_fname, "r") as f:
-        dna_sequence = f.read().strip()
-except FileNotFoundError:
-    print(f"Error: File {dna_fname} not found.")
-    return []
-print(f"Loaded {len(codon_table)}codons.")
-print(f"DNA Sequence Length: {len(dna_sequence)}")
-
-           proteins = []
-           protein = []
-           in_translation = False
-           start_codon = "ATG"
-
-    for i in range(0, len(dna_sequence) - 2, 3):
-        codon = dna_sequence[i:i+3]
-        if in_translation:
-            if codon in codon_table and codon_table[codon] == "*":
-                proteins.append("".join(protein))
-                protein = []
-                in_translation = False
-            elif codon in codon_table:
-                portein.append(codon_table[codon])
-        
-            elif codon == start_codon:
-                in_translation = True
-                protein = []
-    return proteins
+  
 
 from typing import List
 def longest_translatable_sequence(codons_fname: str = 'data/codons.txt', dna_fname: str = 'data/dna.txt') -> int:
