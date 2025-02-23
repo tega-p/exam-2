@@ -148,7 +148,7 @@ with open(dna_fname, 'r') as file:
     dna_sequence = file.read().strip()
     max_length = 0
 
-for frame in range(3)
+for frame in range(3):
 i = frame
 while i < len(dna_sequence) - 2:
     if dna_sequence[i:i+3]
